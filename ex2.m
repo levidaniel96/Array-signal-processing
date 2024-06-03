@@ -7,7 +7,7 @@ w_n=1/N;
 n=0:N-1;
 lambda=1;
 d=lambda/2;
-n0=(N-1)/2;
+n0=ceil((N-1)/2);
 n_m_n0=n-n0;
 %% u space 
 w1=w_n.*ones(N,1);

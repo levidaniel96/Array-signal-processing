@@ -10,7 +10,7 @@ for idx_N=1:length(Vec_N)
     n=0:N-1;
     lambda=1; 
     d=lambda/2;
-    n0=(N-1)/2;
+    n0=ceil((N-1)/2);
     n_m_n0=n-n0;
 %% a)
 
@@ -23,7 +23,7 @@ for idx_N=1:length(Vec_N)
     B_Kz=ULA(psi,w,n_m_n0);
     plot(Kz,abs(B_Kz))
     title('Kz space')
-
+        
     %% psi space 
     subplot(4,1,2)
     psi=linspace(-1,1,Sampels)*2*pi*d/lambda;
@@ -45,7 +45,7 @@ for idx_N=1:length(Vec_N)
     B_theta=ULA(psi,w,n_m_n0);
     plot(theta,abs(B_theta))
     title('\theta space')
-
+    xlim([0 pi])
     
 %% b)
     figure
@@ -59,7 +59,7 @@ end
 % parameters 
 N=10;
 n=0:N-1;
-n0=(N-1)/2;
+n0=ceil((N-1)/2);
 n_m_n0=n-n0;
 % broadside
 w_n=1/N;
@@ -97,7 +97,7 @@ title(['powerpattern in the \Theta space endfire'])
 % parameters 
 N=10;
 n=0:N-1;
-n0=(N-1)/2;
+n0=ceil((N-1)/2);
 n_m_n0=n-n0;
 w_n=1/N;
 theta=linspace(0,pi,Sampels);
@@ -111,7 +111,7 @@ for ang_idx=1:length(ang_vec)
         psi=2*pi*d_lambda(idx)*cos(theta);
         B(idx,:)=ULA(psi,w.',n_m_n0);     
     end
-figure    
+    
 subplot(2,2,ang_idx)
 imagesc(rad2deg(theta),d_lambda,10*log10(abs(B.^2)))
 caxis([-40,0])
@@ -127,7 +127,7 @@ w_n=1/N;
 n=0:N-1;
 lambda=1;
 d=lambda/2;
-n0=(N-1)/2;
+n0=ceil((N-1)/2);
 n_m_n0=n-n0;
 w=w_n.*ones(N,1);
 figure;

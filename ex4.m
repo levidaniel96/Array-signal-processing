@@ -3,7 +3,7 @@
 Sampels=1000;
 N=10;
 n=0:N-1;
-n0=(N-1)/2;
+n0=ceil((N-1)/2);
 n_m_n0=n-n0;
 sigma_w_2=1;
 SNR=70;
@@ -23,18 +23,19 @@ for i=1:length(V_u)
     u=linspace(-1,1,Sampels);
     psi=2*pi*d_lambda*u;
     B_1=ULA(psi,w_MVDR',n_m_n0);
-    plot(u,10*log10(abs(B_1.^2)))
+    plot(u,10*log10(abs(B_1.^2)./max(abs(B_1.^2))))
     hold on 
+    
 end
 ylabel('powerpattern[dB]')
 xlabel('u')
 legend('u1=0.3','u1=0.004')
-
+ylim([-80 10])
 %% b
 Sampels=1000;
 N=10;
 n=0:N-1;
-n0=(N-1)/2;
+n0=ceil((N-1)/2);
 n_m_n0=n-n0;
 sigma_w_2=1;
 SNR_vec=[70,0];

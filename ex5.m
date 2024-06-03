@@ -33,7 +33,7 @@ end
 w_n=1/M;
 w=w_n.*ones(M,1);
 n=0:M-1;
-n0=(M-1)/2;
+n0=ceil((M-1)/2);
 n_m_n0=n-n0;
 %% theta space
 % endfire
